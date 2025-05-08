@@ -1,0 +1,982 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Stunning Websites with AI – Raffaello.dev</title>
+    <meta name="description" content="Raffaello.dev helps creators build and deploy websites using AI – instantly, beautifully, and code-free.">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Build Stunning Websites with AI – Raffaello.dev">
+    <meta property="og:description" content="AI-powered website builder that blends Renaissance-inspired creativity with modern design sensibility.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raffaello.dev">
+    <meta property="og:image" content="https://raffaello.dev/images/social-preview.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@600;700;800&amp;display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+          theme: {
+              extend: {
+                  colors: {
+                      primary: '#7C3AED',
+                      accent: '#8A8BB5',
+                      foreground: '#E2E1F5',
+                      background: '#0A0718',
+                      card: '#120D24',
+                  },
+                  fontFamily: {
+                      sans: ['Inter', 'sans-serif'],
+                      heading: ['Poppins', 'sans-serif'],
+                  },
+                  animation: {
+                      'float': 'float 6s ease-in-out infinite',
+                      'float-reverse': 'float-reverse 7s ease-in-out infinite',
+                      'pulse-glow': 'pulse-glow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                  },
+                  keyframes: {
+                      float: {
+                          '0%, 100%': { transform: 'translateY(0)' },
+                          '50%': { transform: 'translateY(-20px)' },
+                      },
+                      'float-reverse': {
+                          '0%, 100%': { transform: 'translateY(0)' },
+                          '50%': { transform: 'translateY(20px)' },
+                      },
+                      'pulse-glow': {
+                          '0%, 100%': { opacity: '1', 'box-shadow': '0 0 0 0 rgba(124, 58, 237, 0.7)' },
+                          '50%': { opacity: '0.8', 'box-shadow': '0 0 0 10px rgba(124, 58, 237, 0)' },
+                      }
+                  }
+              }
+          }
+      }
+    </script>
+
+    <style type="text/css">
+      body {
+          background-color: #0A0718;
+          color: #E2E1F5;
+          font-family: 'Inter', sans-serif;
+      }
+
+      .noise-bg {
+          position: relative;
+      }
+
+      .noise-bg::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+          opacity: 0.05;
+          pointer-events: none;
+      }
+
+      .renaissance-pattern {
+          background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237C3AED' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+
+      .card-hover-effect {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card-hover-effect:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 25px -5px rgba(124, 58, 237, 0.1), 0 10px 10px -5px rgba(124, 58, 237, 0.04);
+      }
+
+      .header-scrolled {
+          background-color: rgba(10, 7, 24, 0.9);
+          backdrop-filter: blur(10px);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      .mobile-menu {
+          transform: translateX(100%);
+          transition: transform 0.3s ease-in-out;
+      }
+
+      .mobile-menu.open {
+          transform: translateX(0);
+      }
+
+      .testimonial-card {
+          background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(18, 13, 36, 0.8) 100%);
+      }
+
+      .pricing-card-popular {
+          border: 2px solid #7C3AED;
+          position: relative;
+          overflow: hidden;
+      }
+
+      .pricing-card-popular::before {
+          content: "Most Popular";
+          position: absolute;
+          top: 0;
+          right: 0;
+          background-color: #7C3AED;
+          color: white;
+          font-size: 0.75rem;
+          font-weight: 600;
+          padding: 0.25rem 1rem;
+          border-bottom-left-radius: 0.5rem;
+      }
+
+      .accordion-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+      }
+
+      .accordion-content.open {
+          max-height: 300px;
+      }
+    </style>
+  </head>
+  <body class="noise-bg">
+    <!-- Header -->
+    <header id="header" class="fixed w-full z-50 transition-all duration-300">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <span class="text-2xl font-bold font-heading bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">raffaello.dev</span>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex items-center space-x-8">
+            <a href="#features" class="text-foreground hover:text-primary transition-colors duration-200">Features</a>
+            <a href="#showcase" class="text-foreground hover:text-primary transition-colors duration-200">Showcase</a>
+            <a href="#pricing" class="text-foreground hover:text-primary transition-colors duration-200">Pricing</a>
+            <a href="#faq" class="text-foreground hover:text-primary transition-colors duration-200">FAQ</a>
+            <a href="#get-started" class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 hover:shadow-lg hover:shadow-primary/30">Get Started</a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden text-foreground focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-background z-40 flex flex-col items-center justify-center md:hidden">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-foreground">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+
+        <nav class="flex flex-col items-center space-y-8">
+          <a href="#features" class="text-2xl text-foreground hover:text-primary transition-colors duration-200">Features</a>
+          <a href="#showcase" class="text-2xl text-foreground hover:text-primary transition-colors duration-200">Showcase</a>
+          <a href="#pricing" class="text-2xl text-foreground hover:text-primary transition-colors duration-200">Pricing</a>
+          <a href="#faq" class="text-2xl text-foreground hover:text-primary transition-colors duration-200">FAQ</a>
+          <a href="#get-started" class="text-2xl bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full font-medium transition-all duration-200 mt-4">Get Started</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6">
+      <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row items-center">
+          <!-- Hero Text -->
+          <div class="md:w-1/2 mb-12 md:mb-0">
+            <h1 class="text-4xl md:text-6xl font-bold font-heading leading-tight mb-6">
+              <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Design in seconds.</span><br>
+              <span class="text-foreground">Publish in minutes.</span>
+            </h1>
+            <p class="text-xl text-foreground/80 mb-8 max-w-lg">
+              Raffaello.dev is your AI Renaissance assistant — craft beautiful,
+              responsive websites from your ideas, not code.
+            </p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+              <a href="#get-started" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-medium text-center transition-all duration-200 hover:shadow-lg hover:shadow-primary/30 animation-pulse-glow">
+                Get Started Free
+              </a>
+              <a href="#" class="flex items-center justify-center px-8 py-4 rounded-full font-medium border border-accent/30 hover:border-primary text-foreground hover:text-primary transition-all duration-200">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Watch Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Visual -->
+          <div class="md:w-1/2 relative">
+            <div class="relative z-10">
+              <div class="w-full h-80 md:h-96 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl overflow-hidden relative">
+                <!-- Placeholder for demo video or animation -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </div>
+                    <p class="text-primary font-medium">
+                      AI Website Builder Demo
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating decorative elements -->
+            <div class="absolute -top-10 -left-10 w-24 h-24 bg-primary/10 rounded-full filter blur-xl animation-float"></div>
+            <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-accent/10 rounded-full filter blur-xl animation-float-reverse"></div>
+            <div class="absolute top-1/4 -right-8 w-16 h-16 bg-white/5 rounded-lg rotate-45 animation-float"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-6 bg-gradient-to-b from-background to-card">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
+            Masterful results without mastering code
+          </h2>
+          <p class="text-xl text-foreground/80 max-w-2xl mx-auto">
+            Our AI handles the technical details while you focus on your
+            creative vision.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Feature 1 -->
+          <div class="bg-card rounded-2xl p-8 card-hover-effect">
+            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">AI-Powered Canvas</h3>
+            <p class="text-foreground/80">
+              Build from plain English prompts. Describe what you want and watch
+              as our AI creates a beautiful, responsive website in real-time.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="bg-card rounded-2xl p-8 card-hover-effect">
+            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Design Renaissance</h3>
+            <p class="text-foreground/80">
+              Themes with elegance and balance. Inspired by Renaissance
+              principles of proportion and harmony, adapted for the modern web.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="bg-card rounded-2xl p-8 card-hover-effect">
+            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Real-time Editing</h3>
+            <p class="text-foreground/80">
+              Visual updates as you speak. Make changes naturally and see your
+              website transform instantly without touching a line of code.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="bg-card rounded-2xl p-8 card-hover-effect">
+            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">One-Click Publish</h3>
+            <p class="text-foreground/80">
+              Instantly deploy to the web. When you're ready, publish your site
+              with a single click to our global CDN for maximum speed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section id="showcase" class="py-20 px-6 bg-card">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
+            See it in Action
+          </h2>
+          <p class="text-xl text-foreground/80 max-w-2xl mx-auto">
+            Explore websites created with Raffaello.dev across different
+            industries and use cases.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+          <button class="px-4 py-2 rounded-full bg-primary text-white">
+            All
+          </button>
+          <button class="px-4 py-2 rounded-full bg-card border border-accent/20 hover:border-primary text-foreground hover:text-primary transition-colors">
+            Portfolio
+          </button>
+          <button class="px-4 py-2 rounded-full bg-card border border-accent/20 hover:border-primary text-foreground hover:text-primary transition-colors">
+            Startup
+          </button>
+          <button class="px-4 py-2 rounded-full bg-card border border-accent/20 hover:border-primary text-foreground hover:text-primary transition-colors">
+            Blog
+          </button>
+          <button class="px-4 py-2 rounded-full bg-card border border-accent/20 hover:border-primary text-foreground hover:text-primary transition-colors">
+            SaaS
+          </button>
+        </div>
+
+        <!-- Masonry Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Showcase Item 1 -->
+          <div class="rounded-2xl overflow-hidden group relative">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Portfolio website example" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div>
+                <h3 class="text-white text-xl font-bold mb-1">
+                  Artist Portfolio
+                </h3>
+                <p class="text-white/80">Created by Maria L.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Showcase Item 2 -->
+          <div class="rounded-2xl overflow-hidden group relative">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Startup website example" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div>
+                <h3 class="text-white text-xl font-bold mb-1">Tech Startup</h3>
+                <p class="text-white/80">Created by NextGen Labs</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Showcase Item 3 -->
+          <div class="rounded-2xl overflow-hidden group relative">
+            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Blog website example" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div>
+                <h3 class="text-white text-xl font-bold mb-1">Travel Blog</h3>
+                <p class="text-white/80">Created by World Explorer</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Showcase Item 4 -->
+          <div class="rounded-2xl overflow-hidden group relative">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="SaaS website example" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div>
+                <h3 class="text-white text-xl font-bold mb-1">
+                  SaaS Dashboard
+                </h3>
+                <p class="text-white/80">Created by DataTools Inc.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Showcase Item 5 -->
+          <div class="rounded-2xl overflow-hidden group relative">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Blog website example" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div>
+                <h3 class="text-white text-xl font-bold mb-1">Tech Blog</h3>
+                <p class="text-white/80">Created by CodeMaster</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Showcase Item 6 -->
+          <div class="rounded-2xl overflow-hidden group relative">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Portfolio website example" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div>
+                <h3 class="text-white text-xl font-bold mb-1">
+                  Photographer Portfolio
+                </h3>
+                <p class="text-white/80">Created by Alex R.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="#get-started" class="inline-block bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-medium transition-all duration-200 hover:shadow-lg hover:shadow-primary/30">
+            Create Your Own Masterpiece
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 px-6 bg-gradient-to-b from-card to-background">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
+            Loved by builders, creators, and dreamers
+          </h2>
+          <p class="text-xl text-foreground/80 max-w-2xl mx-auto">
+            Don't just take our word for it. Here's what our community says.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card rounded-2xl p-8 border border-accent/10">
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                <span class="text-xl">👩‍💻</span>
+              </div>
+              <div>
+                <h4 class="font-bold">Sarah K.</h4>
+                <p class="text-sm text-foreground/60">Founder @ IndieSaaS</p>
+              </div>
+            </div>
+            <p class="text-foreground/80">
+              "As a solo founder, Raffaello.dev saved me hundreds of hours. I
+              went from idea to live site in one afternoon, and it looks better
+              than anything I could have coded myself."
+            </p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card rounded-2xl p-8 border border-accent/10">
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                <span class="text-xl">🎨</span>
+              </div>
+              <div>
+                <h4 class="font-bold">Miguel T.</h4>
+                <p class="text-sm text-foreground/60">Designer &amp; Artist</p>
+              </div>
+            </div>
+            <p class="text-foreground/80">
+              "The design quality is exceptional. It understands aesthetic
+              principles I can't articulate but know when I see. My portfolio
+              has never looked better."
+            </p>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card rounded-2xl p-8 border border-accent/10">
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                <span class="text-xl">🚀</span>
+              </div>
+              <div>
+                <h4 class="font-bold">Jamie L.</h4>
+                <p class="text-sm text-foreground/60">CTO @ StartupX</p>
+              </div>
+            </div>
+            <p class="text-foreground/80">
+              "We use Raffaello.dev for all our marketing sites now. The speed
+              of iteration is game-changing, and our designers love how it
+              implements their vision perfectly."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 px-6 bg-background">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
+            Start free. Scale as you grow.
+          </h2>
+          <p class="text-xl text-foreground/80 max-w-2xl mx-auto">
+            Simple, transparent pricing that grows with your needs.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <!-- Free Plan -->
+          <div class="bg-card rounded-2xl p-8 border border-accent/10">
+            <h3 class="text-2xl font-bold mb-2">Free</h3>
+            <p class="text-foreground/80 mb-6">Perfect for trying out</p>
+
+            <div class="mb-8">
+              <span class="text-4xl font-bold">$0</span>
+              <span class="text-foreground/60">/month</span>
+            </div>
+
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>1M tokens/month</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Unlimited sites</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Community support</span>
+              </li>
+              <li class="flex items-center text-foreground/60">
+                <svg class="w-5 h-5 text-foreground/30 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                <span>Watermark</span>
+              </li>
+              <li class="flex items-center text-foreground/60">
+                <svg class="w-5 h-5 text-foreground/30 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                <span>No custom domains</span>
+              </li>
+            </ul>
+
+            <a href="#get-started" class="block w-full bg-card border border-accent/20 hover:border-primary text-center text-foreground hover:text-primary py-3 rounded-lg transition-colors duration-200">
+              Get Started
+            </a>
+          </div>
+
+          <!-- Pro Plan -->
+          <div class="bg-card rounded-2xl p-8 border border-primary pricing-card-popular">
+            <div class="mb-4">
+              <span class="inline-block bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full">Most Popular</span>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-2">Pro</h3>
+            <p class="text-foreground/80 mb-6">For serious creators</p>
+
+            <div class="mb-8">
+              <span class="text-4xl font-bold">$29</span>
+              <span class="text-foreground/60">/month</span>
+            </div>
+
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>5M tokens/month</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Unlimited sites</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Priority support</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Custom domains</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>No watermark</span>
+              </li>
+            </ul>
+
+            <a href="#get-started" class="block w-full bg-primary hover:bg-primary/90 text-center text-white py-3 rounded-lg transition-colors duration-200">
+              Upgrade Now
+            </a>
+          </div>
+
+          <!-- Team Plan -->
+          <div class="bg-card rounded-2xl p-8 border border-accent/10">
+            <h3 class="text-2xl font-bold mb-2">Team</h3>
+            <p class="text-foreground/80 mb-6">For growing teams</p>
+
+            <div class="mb-8">
+              <span class="text-4xl font-bold">$99</span>
+              <span class="text-foreground/60">/month</span>
+            </div>
+
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>20M tokens/month</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Unlimited sites</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>24/7 support</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Team collaboration</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Advanced analytics</span>
+              </li>
+            </ul>
+
+            <a href="#get-started" class="block w-full bg-card border border-accent/20 hover:border-primary text-center text-foreground hover:text-primary py-3 rounded-lg transition-colors duration-200">
+              Contact Sales
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-6 bg-gradient-to-b from-background to-card">
+      <div class="container mx-auto max-w-4xl">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
+            Frequently Asked
+          </h2>
+          <p class="text-xl text-foreground/80 max-w-2xl mx-auto">
+            Answers to common questions about Raffaello.dev
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- FAQ Item 1 -->
+          <div class="bg-card rounded-xl overflow-hidden border border-accent/10">
+            <button class="faq-toggle w-full flex justify-between items-center p-6 text-left">
+              <h3 class="text-lg font-medium">
+                How does AI generate websites?
+              </h3>
+              <svg class="w-5 h-5 text-primary transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="accordion-content px-6">
+              <div class="pb-6 text-foreground/80">
+                <p>
+                  Raffaello.dev uses advanced AI models trained on millions of
+                  high-quality website designs. When you describe what you want,
+                  our system analyzes your input, understands your intent, and
+                  generates responsive HTML/CSS/JavaScript that matches modern
+                  web standards. You can then customize every aspect through our
+                  visual editor.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="bg-card rounded-xl overflow-hidden border border-accent/10">
+            <button class="faq-toggle w-full flex justify-between items-center p-6 text-left">
+              <h3 class="text-lg font-medium">
+                Can I connect a custom domain?
+              </h3>
+              <svg class="w-5 h-5 text-primary transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="accordion-content px-6">
+              <div class="pb-6 text-foreground/80">
+                <p>
+                  Yes! On our Pro and Team plans, you can connect any custom
+                  domain you own. We provide simple DNS instructions and handle
+                  SSL certificates automatically. Free plan sites are hosted on
+                  a raffaello.dev subdomain.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="bg-card rounded-xl overflow-hidden border border-accent/10">
+            <button class="faq-toggle w-full flex justify-between items-center p-6 text-left">
+              <h3 class="text-lg font-medium">What's the token usage model?</h3>
+              <svg class="w-5 h-5 text-primary transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="accordion-content px-6">
+              <div class="pb-6 text-foreground/80">
+                <p>
+                  Tokens represent the computational resources used to generate
+                  and update your website. Simple edits use few tokens, while
+                  complete redesigns use more. Each plan includes a generous
+                  monthly token allowance, and unused tokens roll over for 3
+                  months. You can purchase additional tokens if needed.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="bg-card rounded-xl overflow-hidden border border-accent/10">
+            <button class="faq-toggle w-full flex justify-between items-center p-6 text-left">
+              <h3 class="text-lg font-medium">Do you offer refunds?</h3>
+              <svg class="w-5 h-5 text-primary transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="accordion-content px-6">
+              <div class="pb-6 text-foreground/80">
+                <p>
+                  We offer a 14-day money-back guarantee for all paid plans. If
+                  you're not satisfied for any reason, contact us within 14 days
+                  of purchase for a full refund. Free plans can be canceled
+                  anytime.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="bg-card rounded-xl overflow-hidden border border-accent/10">
+            <button class="faq-toggle w-full flex justify-between items-center p-6 text-left">
+              <h3 class="text-lg font-medium">How secure is my data?</h3>
+              <svg class="w-5 h-5 text-primary transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="accordion-content px-6">
+              <div class="pb-6 text-foreground/80">
+                <p>
+                  Security is our top priority. All data is encrypted in transit
+                  and at rest. We undergo regular security audits and comply
+                  with GDPR. You retain full ownership of your content, and we
+                  never sell or share your data with third parties.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="get-started" class="py-20 px-6 bg-gradient-to-br from-primary/10 to-accent/10">
+      <div class="container mx-auto max-w-4xl text-center">
+        <div class="renaissance-pattern rounded-3xl p-12">
+          <blockquote class="text-2xl md:text-3xl font-medium italic mb-8">
+            "A brush in hand, a canvas online. Your masterpiece is one click
+            away."
+          </blockquote>
+
+          <a href="#" class="inline-block bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-medium text-lg transition-all duration-200 hover:shadow-lg hover:shadow-primary/30">
+            Start Creating Now
+          </a>
+
+          <p class="mt-6 text-foreground/80">
+            No credit card required. Free forever plan available.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-card">
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <!-- Column 1 -->
+          <div>
+            <h4 class="text-lg font-bold mb-4">raffaello.dev</h4>
+            <p class="text-foreground/80 mb-4">
+              AI-powered website builder blending Renaissance-inspired
+              creativity with modern design.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-foreground/60 hover:text-primary transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                </svg>
+              </a>
+              <a href="#" class="text-foreground/60 hover:text-primary transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.09.682-.218.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"></path>
+                </svg>
+              </a>
+              <a href="#" class="text-foreground/60 hover:text-primary transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div>
+            <h4 class="text-lg font-bold mb-4">Product</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-foreground/60 hover:text-primary transition-colors">Features</a>
+              </li>
+              <li>
+                <a href="#" class="text-foreground/60 hover:text-primary transition-colors">Pricing</a>
+              </li>
+              <li>
+                <a href="#" class="text-foreground/60 hover:text-primary transition-colors">Showcase</a>
+              </li>
+              <li>
+                <a href="#" class="text-foreground/60 hover:text-primary transition-colors">Roadmap</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 3 -->
+          <div>
+            <h4 class="text-lg font-bold mb-4">Resources</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-foreground/60 hover:text-primary transition-colors">Documentation</a>
+              </li>
+              <li>
+                <a href="#" class="text-foreground/60 hover:text-primary transition-colors">Blog</a>
+              </li>
+              <li>
+                <a href="#" class="text-foreground/60 hover:text-primary transition-colors">Tutorials</a>
+              </li>
+              <li>
+                <a href="#" class="text-foreground/60 hover:text-primary transition-colors">Community</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 4 -->
+          <div>
+            <h4 class="text-lg font-bold mb-4">Company</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-foreground/60 hover:text-primary transition-colors">About</a>
+              </li>
+              <li>
+                <a href="#" class="text-foreground/60 hover:text-primary transition-colors">Careers</a>
+              </li>
+              <li>
+                <a href="#" class="text-foreground/60 hover:text-primary transition-colors">Privacy</a>
+              </li>
+              <li>
+                <a href="#" class="text-foreground/60 hover:text-primary transition-colors">Terms</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-accent/10 text-center text-foreground/60">
+          <p>© 2023 Raffaello.dev. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+      mobileMenuButton.addEventListener('click', () => {
+          mobileMenu.classList.add('open');
+      });
+
+      closeMobileMenu.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+      });
+
+      // Header scroll effect
+      const header = document.getElementById('header');
+
+      window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+              header.classList.add('header-scrolled');
+          } else {
+              header.classList.remove('header-scrolled');
+          }
+      });
+
+      // FAQ accordion
+      const faqToggles = document.querySelectorAll('.faq-toggle');
+
+      faqToggles.forEach(toggle => {
+          toggle.addEventListener('click', () => {
+              const content = toggle.nextElementSibling;
+              const icon = toggle.querySelector('svg');
+
+              // Toggle this item
+              content.classList.toggle('open');
+              icon.classList.toggle('rotate-180');
+
+              // Close other items
+              faqToggles.forEach(otherToggle => {
+                  if (otherToggle !== toggle) {
+                      otherToggle.nextElementSibling.classList.remove('open');
+                      otherToggle.querySelector('svg').classList.remove('rotate-180');
+                  }
+              });
+          });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+
+              const targetId = this.getAttribute('href');
+              if (targetId === '#') return;
+
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                  // Close mobile menu if open
+                  mobileMenu.classList.remove('open');
+
+                  // Scroll to target
+                  window.scrollTo({
+                      top: targetElement.offsetTop - 80,
+                      behavior: 'smooth'
+                  });
+              }
+          });
+      });
+    </script>
+  
+
+</body></html>
