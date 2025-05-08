@@ -1,0 +1,211 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Stunning Websites with AI – Raffaello.dev</title>
+    <meta name="description" content="Raffaello.dev helps creators build and deploy websites using AI – instantly, beautifully, and code-free.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@600;700&amp;display=swap" rel="stylesheet">
+    <style>
+      :root {
+          --primary: #7C3AED;
+          --accent: #5A4AEF;
+          --foreground: #F0EEFF;
+          --background: #0A051A;
+          --card: #140B24;
+      }
+
+      body {
+          font-family: 'Inter', sans-serif;
+          background-color: var(--background);
+          color: var(--foreground);
+      }
+
+      h1, h2, h3 {
+          font-family: 'Poppins', sans-serif;
+          letter-spacing: 0.05em;
+      }
+
+      .glow-on-hover:hover {
+          box-shadow: 0 0 20px var(--primary);
+          transition: box-shadow 0.3s ease;
+      }
+
+      /* Example animation */
+      @keyframes float {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0); }
+      }
+
+      .floating {
+          animation: float 3s infinite ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="bg-background">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-background bg-opacity-75 backdrop-blur-md py-4 shadow-md">
+      <div class="container mx-auto px-4 flex items-center justify-between">
+        <a href="#" class="text-2xl font-bold text-foreground">raffaello.dev</a>
+        <nav class="hidden md:flex items-center space-x-6">
+          <a href="#features" class="hover:text-accent">Features</a>
+          <a href="#showcase" class="hover:text-accent">Showcase</a>
+          <a href="#pricing" class="hover:text-accent">Pricing</a>
+          <a href="#faq" class="hover:text-accent">FAQ</a>
+          <a href="#" class="bg-primary text-foreground py-2 px-4 rounded-md hover:bg-accent transition duration-300">Get Started</a>
+        </nav>
+        <!-- Mobile Menu (Hamburger) -->
+        <button class="md:hidden text-foreground focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto py-20 px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Design in seconds. <br>Publish in minutes.
+          </h1>
+          <p class="text-lg text-foreground opacity-75 mb-8">
+            Raffaello.dev is your AI Renaissance assistant — craft beautiful,
+            responsive websites from your ideas, not code.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="bg-primary text-foreground py-3 px-6 rounded-md hover:bg-accent transition duration-300">Get Started Free</a>
+            <a href="#" class="flex items-center text-foreground hover:text-accent transition duration-300">
+              <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132a1 1 0 00-1.506.541L5 17.591M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Watch Demo
+            </a>
+          </div>
+        </div>
+        <div>
+          <img src="https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="AI Website Builder" class="rounded-lg shadow-lg floating">
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="features" class="container mx-auto py-16 px-4">
+      <h2 class="text-3xl font-bold text-center text-foreground mb-12">
+        Masterful results without mastering code
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-card p-6 rounded-lg shadow-md glow-on-hover">
+          <h3 class="text-xl font-semibold text-foreground mb-2">
+            🧠 AI-Powered Canvas
+          </h3>
+          <p class="text-foreground opacity-75">
+            Build from plain English prompts. Watch your ideas come to life
+            instantly.
+          </p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="bg-card p-6 rounded-lg shadow-md glow-on-hover">
+          <h3 class="text-xl font-semibold text-foreground mb-2">
+            🎨 Design Renaissance
+          </h3>
+          <p class="text-foreground opacity-75">
+            Themes with elegance and balance. Create visually stunning websites
+            effortlessly.
+          </p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="bg-card p-6 rounded-lg shadow-md glow-on-hover">
+          <h3 class="text-xl font-semibold text-foreground mb-2">
+            ⚡ Real-time Editing
+          </h3>
+          <p class="text-foreground opacity-75">
+            Visual updates as you speak. Fine-tune your design with intuitive
+            controls.
+          </p>
+        </div>
+        <!-- Feature 4 -->
+        <div class="bg-card p-6 rounded-lg shadow-md glow-on-hover">
+          <h3 class="text-xl font-semibold text-foreground mb-2">
+            🚀 One-Click Publish
+          </h3>
+          <p class="text-foreground opacity-75">
+            Instantly deploy to the web. Share your masterpiece with the world
+            in seconds.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Showcase Gallery -->
+    <section id="showcase" class="container mx-auto py-16 px-4">
+      <h2 class="text-3xl font-bold text-center text-foreground mb-12">
+        See it in Action
+      </h2>
+      <!-- Masonry-style gallery here -->
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="container mx-auto py-16 px-4">
+      <h2 class="text-3xl font-bold text-center text-foreground mb-12">
+        Loved by builders, creators, and dreamers
+      </h2>
+      <!-- Testimonial carousel here -->
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="container mx-auto py-16 px-4">
+      <h2 class="text-3xl font-bold text-center text-foreground mb-12">
+        Start free. Scale as you grow.
+      </h2>
+      <!-- Pricing cards here -->
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section id="faq" class="container mx-auto py-16 px-4">
+      <h2 class="text-3xl font-bold text-center text-foreground mb-12">
+        Frequently Asked
+      </h2>
+      <!-- FAQ accordion here -->
+    </section>
+
+    <!-- CTA Footer Section -->
+    <section class="bg-card py-20 px-4">
+      <div class="container mx-auto text-center">
+        <p class="text-2xl italic text-foreground opacity-75 mb-8">
+          A brush in hand, a canvas online. Your masterpiece is one click away.
+        </p>
+        <a href="#" class="bg-primary text-foreground py-3 px-6 rounded-md hover:bg-accent transition duration-300">Start Creating Now</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-background py-8 px-4">
+      <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+        <div class="text-foreground opacity-75 mb-4 md:mb-0">
+          © 2024 raffaello.dev. All rights reserved.
+        </div>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-accent">About</a>
+          <a href="#" class="hover:text-accent">Terms of Service</a>
+          <a href="#" class="hover:text-accent">Privacy Policy</a>
+          <a href="#" class="hover:text-accent">Blog</a>
+          <a href="#" class="hover:text-accent">Contact</a>
+        </div>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-accent"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8.544 22h6.912V10.64H8.544V22zm-1.92-3.36h.96v-7.2h-.96v7.2zm8.832 0h.96v-7.2h-.96v7.2zM12 24C5.376 24 0 18.624 0 12S5.376 0 12 0s12 5.376 12 12-5.376 12-12 12zm0-2.4c5.328 0 9.6-4.272 9.6-9.6S17.328 2.4 12 2.4 2.4 6.672 2.4 12s4.272 9.6 9.6 9.6z"></path></svg></a>
+          <a href="#" class="hover:text-accent"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.45 9.56c-.09.87-.71 1.51-1.49 1.51-.8 0-1.42-.64-1.51-1.51-.09-.87.53-1.51 1.31-1.51.8 0 1.42.64 1.51 1.51zm-5.45 5.45c-3.05 0-5.53-2.48-5.53-5.53S8.95 3.94 12 3.94s5.53 2.48 5.53 5.53-2.48 5.53-5.53 5.53zm0-1.2c2.39 0 4.33-1.94 4.33-4.33S14.39 5.14 12 5.14s-4.33 1.94-4.33 4.33 1.94 4.33 4.33 4.33z"></path></svg></a>
+          <a href="#" class="hover:text-accent"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.45 9.56c-.09.87-.71 1.51-1.49 1.51-.8 0-1.42-.64-1.51-1.51-.09-.87.53-1.51 1.31-1.51.8 0 1.42.64 1.51 1.51zm-5.45 5.45c-3.05 0-5.53-2.48-5.53-5.53S8.95 3.94 12 3.94s5.53 2.48 5.53 5.53-2.48 5.53-5.53 5.53zm0-1.2c2.39 0 4.33-1.94 4.33-4.33S14.39 5.14 12 5.14s-4.33 1.94-4.33 4.33 1.94 4.33 4.33 4.33z"></path></svg></a>
+        </div>
+      </div>
+    </footer>
+  
+
+</body></html>
